@@ -3,9 +3,13 @@ import { v4 } from 'uuid';
 function NewIceCreamForm({ onSubmit }) {
     const handleNewIceCreamFormSubmission = (event) => {
         event.preventDefault();
+        const flavor = event.target.flavor.value;
+        const buckets = parseInt(event.target.buckets.value);
+        const scoops = buckets * 130;
         const newIceCream = {
-            flavor: event.target.flavor.value,
-            buckets: parseInt(event.target.buckets.value),
+            flavor,
+            buckets,
+            scoops,
             id: v4(),
         };
         onSubmit(newIceCream);

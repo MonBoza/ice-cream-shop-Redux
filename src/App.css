@@ -1,5 +1,5 @@
 .navBar {
   display: flex;
-  gap: 10px;
-  color-scheme: blue;
+  justify-content: space-between;
+  padding: 10px;
 }

@@ -5,10 +5,11 @@ const IceCreamList = (props) => {
 
     return (
         <div>
-            {iceCream.map((iceCream) => (
+             {iceCream.map((iceCream, index) => (
                 <div key={iceCream.id} onClick={() => props.onItemClick(iceCream)}>
                     <img height="200px" src={iceCream.image} alt={iceCream.flavor} />
                     <h2>{iceCream.flavor}</h2>
+                    <hr/>
                 </div>
             ))}
         </div>

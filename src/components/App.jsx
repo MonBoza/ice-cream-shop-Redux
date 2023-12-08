@@ -7,9 +7,11 @@ function App() {
     <>
       <div>
         <Header />
+        <hr/>
       </div>
       <div>
         <IceCreamControl />
+        <hr/>
       </div>
     </>
   )
