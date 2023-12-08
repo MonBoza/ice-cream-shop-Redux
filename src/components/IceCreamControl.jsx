@@ -1,41 +1,71 @@
-import IceCreamList from "./IceCreamList";
-import NewIceCreamForm from "./NewIceCreamForm"
+import IceCreamList from "./IceCreamList.jsx";
+import NewIceCreamForm from "./NewIceCreamForm.jsx";
+import { useState } from "react";
 
 const IceCreamControl = () => {
-    const [IceCream, setIceCream] = useState([
+    const [iceCream, setIceCream] = useState([
         {
-            flavor:'Chocolate',
+            flavor:'chocolate',
             buckets: 4,
             pints: 130,
             id: '1'
         },
         {
-            flavor:'Rocky Road',
+            flavor:'rocky road',
             buckets: 4,
             pints: 130,
             id: '2'
         },
         {
-            flavor:'Cookies and Cream',
+            flavor:'cookies and cream',
             buckets: 4,
             pints: 130,
             id: '3'
         },
         {
-            flavor:'Unicorn',
+            flavor:'unicorn',
             buckets: 4,
             pints: 130,
             id: '4'
         }
   
     ]);
+    const [handleShowFavorite, setShowIceCream] = useState(false);
+    const [selectedIceCream, setSelectedFlavor] = useState(null);
+  
+    const handleShowFavoriteIceCream= () => {
+      setShowIceCream(true);
+      setSelectedIceCream(null);
+    }
+    const showIceCream = (iceCream) => {
+        setShowIceCream(false);
+        setSelectedIceCream(iceCream);
+    }
+
+    const handleAddingNewIceCreamToList = (newIceCream) => {
+        setIceCream((prevIceCream) => {
+            const updateIceCream = [...prevIceCream, newIceCream];
+            return updatedIceCream;
+
+        });
+    };
+  
+
+    const filteredFlavors = showIceCream ? iceCream.filter(() => iceCream.flavor === 'chocolate') : iceCream;
     return (
+        <>
         <div>
-        <IceCreamList/>
+            
+          < IceCreamList iceCream={selectedIceCream} />
+          <button onClick={handleShowFavoriteIceCream}>ShowMostPopular</button>
+          <button onClick={showIceCream}>Show All IceCream</button>
+        
         </div>
+       
         <div>
-        <NewIceCreamForm/>
-        </div>
+                <NewIceCreamForm onSubmit={handleAddingNewIceCreamToList}/>
+            </div>
+            </>
     )
 
 }
