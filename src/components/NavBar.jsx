@@ -1,9 +1,10 @@
 
-const NavBar = ({ onShowFavoriteFlavor }) => {
+const NavBar = ({ onShowFavoriteFlavorClick , onHomeClick}) => {
     return (
       <nav className="navBar">
-        <button variant='primary' onClick={onShowFavoriteFlavor}>Click for Top Flavor</button>
-        <button>Home</button>
+        <button variant='primary' onClick={onShowFavoriteFlavorClick}>Click for Top Flavor</button>
+        <button onClick={onHomeClick}>Home</button>
+        <hr/>
       </nav>
     );
   };

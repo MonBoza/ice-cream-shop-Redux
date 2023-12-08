@@ -6,7 +6,6 @@ function NewIceCreamForm({ onSubmit }) {
         const newIceCream = {
             flavor: event.target.flavor.value,
             buckets: parseInt(event.target.buckets.value),
-            pints: parseInt(event.target.pints.value),
             id: v4(),
         };
         onSubmit(newIceCream);
@@ -21,7 +20,8 @@ function NewIceCreamForm({ onSubmit }) {
                 </div>
                 <div>
                     <label htmlFor="buckets">Buckets:</label>
-                    <select name="buckets" id="buckets" defaultValue="1" required>
+                    <select 
+                    name="buckets" id="buckets" defaultValue="1" required>
                         {[1, 2, 3, 4].map((bucket) => (
                             <option key={bucket} value={bucket}>
                                 {bucket}
@@ -29,7 +29,7 @@ function NewIceCreamForm({ onSubmit }) {
                         ))}
                     </select>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Add Ice Cream</button>
             </form>
         </>
     );
