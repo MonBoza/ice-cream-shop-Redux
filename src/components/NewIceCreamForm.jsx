@@ -11,27 +11,28 @@ function NewIceCreamForm({ onSubmit }) {
         };
         onSubmit(newIceCream);
     }
-return (
-    <>
-    <form onSubmit={handleNewIceCreamFormSubmission}>
-    <div>
-          <label for="flavor">Flavor:</label>
-          <input type="text" name="flavor" placeholder="flavor" required />
-        </div>
-        <div>
-          <label htmlFor="buckets">Buckets:</label>
-          <select name="buckets" defaultValue="1" required>
-            {[1, 2, 3, 4].map((bucket) => (
-              <option key={bucket} value={bucket}>
-                {bucket}
-              </option>
-            ))}
-          </select>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </>
-  );
+
+    return (
+        <>
+            <form onSubmit={handleNewIceCreamFormSubmission}>
+                <div>
+                    <label htmlFor="flavor">Flavor:</label>
+                    <input type="text" name="flavor" id="flavor" placeholder="flavor" required />
+                </div>
+                <div>
+                    <label htmlFor="buckets">Buckets:</label>
+                    <select name="buckets" id="buckets" defaultValue="1" required>
+                        {[1, 2, 3, 4].map((bucket) => (
+                            <option key={bucket} value={bucket}>
+                                {bucket}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </>
+    );
 }
 
 export default NewIceCreamForm;
