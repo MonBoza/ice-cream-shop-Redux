@@ -35,6 +35,7 @@ This App tracks the inventory of a local ice cream shop. It allows you to buy ic
 
 ## Component Diagram
 
+![diagram](https://github.com/MonBoza/ice-cream-shop/assets/145809292/d69a41ae-0741-48f1-bb17-0e2ca2a952df)
 
 ## Known Bugs
 No known bugs.
