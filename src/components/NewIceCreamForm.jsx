@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'
 import { v4 } from 'uuid';
 
 function NewIceCreamForm({ onSubmit }) {
@@ -9,11 +10,13 @@ function NewIceCreamForm({ onSubmit }) {
     const flavor = event.target.flavor.value;
     const buckets = parseInt(event.target.buckets.value);
     const scoops = buckets * 130;
+    const price = 4.99;
     const newIceCream = {
       flavor,
       buckets,
       scoops,
       image,
+      price,
       id: v4(),
     };
     onSubmit(newIceCream);
@@ -70,5 +73,7 @@ function NewIceCreamForm({ onSubmit }) {
     </>
   );
 }
-
+NewIceCreamForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 export default NewIceCreamForm;
