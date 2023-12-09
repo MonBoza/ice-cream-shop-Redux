@@ -1,12 +1,71 @@
+.header-text {
+  color:darkviolet;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+}
 .navBar {
   display: flex;
   justify-content: space-between;
+  background-color: #82b2d0;
+  color: #ffffff;
   padding: 10px;
 }
+
 .iceCreamList {
   display: flex;
 }
 
 .separator {
-  margin: 0 10px; 
+  margin: 0 20px; 
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: url('https://img.freepik.com/free-vector/memphis-falling-confetti-style-pattern-background_1017-27574.jpg?size=626&ext=jpg');
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#iceCream {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: aqua;
+}
+
+#iceCream h2 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #28a745;
+  color: #ffffff;
+  cursor: pointer;
+  margin-right: 10px;
 }

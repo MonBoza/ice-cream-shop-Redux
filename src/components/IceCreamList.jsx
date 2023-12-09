@@ -20,6 +20,7 @@ const IceCreamList = (props) => {
               />
               <div className="card-body">
                 <h5 className="card-title">{iceCream.flavor}</h5>
+                <p className="card-text">Price: ${iceCream.price.toFixed(2)}</p>
               </div>
             </div>
           </div>

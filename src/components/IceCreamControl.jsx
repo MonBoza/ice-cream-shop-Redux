@@ -17,28 +17,32 @@ const IceCreamControl = () => {
       buckets: 1,
      scoops: 130,
       id: '1',
-      image: chocolate
+      image: chocolate,
+      price: 4.99,
     },
     {
       flavor: 'rocky road',
       buckets: 1,
      scoops: 130,
       id: '2',
-      image: rockyroad
+      image: rockyroad,
+      price: 4.99,
     },
     {
       flavor: 'cookies and cream',
       buckets: 1,
      scoops: 130,
       id: '3',
-      image: cookiesandcream
+      image: cookiesandcream,
+      price: 4.99,
     },
     {
       flavor: 'unicorn',
       buckets: 1,
      scoops: 130,
       id: '4',
-      image: unicorn
+      image: unicorn,
+      price: 4.99,
     },
   ]);
 
