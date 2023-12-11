@@ -7,6 +7,7 @@ const NavBar = ({ onShowFavoriteFlavorClick, onHomeClick, onAddFlavorClick }) =>
       <button onClick={onHomeClick}>Home</button>
       <button onClick={onAddFlavorClick}>Add Inventory</button>
       <hr />
+      
     </nav>
   );
 };

@@ -77,7 +77,7 @@ const IceCreamControl = () => {
                     ? {
                         ...item,
                         buckets: item.buckets + 1,
-                        scoops: item.scoops + 130,
+                        scoops: item.scoops + (item.buckets + 1) * 130,
                     }
                     : item;
             });

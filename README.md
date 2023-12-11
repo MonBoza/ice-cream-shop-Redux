@@ -19,13 +19,15 @@
 * Miro
 
 ### Description
-This App tracks the inventory of a local ice cream shop. It allows you to buy ice cream by the scoop, Restock by the bucket(then adds 130 scoops per bucket). You can Also add new flavors to the shop.
+This App tracks the inventory of a local ice cream shop. It allows you to update ice cream scoops sold, Restock by the bucket(then adds 130 scoops per bucket). You can Also add new flavors to the shop. To navigate back to all flavors by clicking the home button.
+![IceCreamInventory](src/assets/img/IceCreamInventory.png)
 
 ## Setup/Installation Requirements
 
 * Open terminal or command prompt.
 * Clone the repository by running the following command to your desktop: git clone https://github.com/MonBoza/ice-cream-shop.git
-* Run npm install in your terminal
+* Run <mark>npm install</mark> in your terminal
+* Run <mark>npm install bootstrap</mark> for design and <mark>npm install uuid</mark>
 * To start the live server add npm run dev to your terminal
 * Lint the JavaScript files in src/js folder  with $ run Lint
 * Test out functions and methods with jest with $ npm run test.
@@ -38,7 +40,7 @@ This App tracks the inventory of a local ice cream shop. It allows you to buy ic
 ![diagram](https://github.com/MonBoza/ice-cream-shop/assets/145809292/560339fb-2f83-4c15-8032-8d8f523cf5e8)
 
 ## Known Bugs
-No known bugs.
+One bug when you sell all the scoops and restock it adds 2 Buckets but only 130 scoops. 
 
 
 ## License
