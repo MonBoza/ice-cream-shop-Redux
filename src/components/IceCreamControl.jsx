@@ -69,7 +69,6 @@ const IceCreamControl = () => {
         setSelectedFlavor(null);
         setShowAddFlavorForm(false);
     }
-
     const handleRestock = () => {
         setIceCream((prevIceCream) => {
             const updatedIceCream = prevIceCream.map((item) => {
@@ -77,7 +76,7 @@ const IceCreamControl = () => {
                     ? {
                         ...item,
                         buckets: item.buckets + 1,
-                        scoops: item.scoops + (item.buckets + 1) * 130,
+                        scoops: item.scoops + 130,
                     }
                     : item;
             });
