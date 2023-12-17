@@ -1,77 +1,69 @@
 import { createSlice } from '@reduxjs/toolkit';
-import chocolate from '../images/chocolate.jpg';
-import rockyroad from '../images/rockyroad.jpg';
-import cookiesandcream from '../images/cookiesandcream.jpg';
-import unicorn from '../images/unicorn.jpg';
+import chocolate from '../assets/img/chocolate.jpg';
+import rockyroad from '../assets/img/rockyroad.jpg';
+import cookiesandcream from '../assets/img/cookiesandcream.jpg';
+import unicorn from '../assets/img/unicorn.jpg';
 
-const initialState = {
-  iceCreams: [ {
-    flavor: 'chocolate',
-    buckets: 1,
-    scoops: 130,
-    id: '1',
-    image: chocolate,
-    price: 4.99,
-},
-{
-    flavor: 'rocky road',
-    buckets: 1,
-    scoops: 130,
-    id: '2',
-    image: rockyroad,
-    price: 4.99,
-},
-{
-    flavor: 'cookies and cream',
-    buckets: 1,
-    scoops: 130,
-    id: '3',
-    image: cookiesandcream,
-    price: 4.99,
-},
-{
-    flavor: 'unicorn',
-    buckets: 1,
-    scoops: 130,
-    id: '4',
-    image: unicorn,
-    price: 4.99,
-},],
-// selectedIceCream: null,
-};
+const initialState = [
+  {
+      flavor: 'chocolate',
+      buckets: 1,
+      scoops: 130,
+      id: '1',
+      image: chocolate,
+      price: 4.99,
+  },
+  {
+      flavor: 'rocky road',
+      buckets: 1,
+      scoops: 130,
+      id: '2',
+      image: rockyroad,
+      price: 4.99,
+  },
+  {
+      flavor: 'cookies and cream',
+      buckets: 1,
+      scoops: 130,
+      id: '3',
+      image: cookiesandcream,
+      price: 4.99,
+  },
+  {
+      flavor: 'unicorn',
+      buckets: 1,
+      scoops: 130,
+      id: '4',
+      image: unicorn,
+      price: 4.99,
+  },
+];
 
 const iceCreamSlice = createSlice({
-  name: 'iceCreams',
+  name: 'iceCream',
   initialState,
   reducers: {
-    addIceCream: (state, action) => {
-      state.iceCreams.push(action.payload);
-    },
-    showSelectedIceCream: (state, action) => {
-      return {
-        selectedIceCream: state.iceCreams.find(
-          (iceCream) => iceCream.id === action.payload
-        ),
-      };
-    },
-    sellScoop: (state) => {
-  const updatedIceCreams = state.iceCreams.map((iceCream) =>
-  iceCream.id === state.selectedIceCream.id
-    ? { ...iceCream, scoops: Math.max(0, iceCream.scoops - 1) }
-    : iceCream
-);
-
-return {
-  ...state,
-  iceCreams: updatedIceCreams,
-  selectedIceCream: updatedIceCreams.find(
-    (iceCream) => iceCream.id === state.selectedIceCream.id
-  ),
-};
-},
+      addIceCream: (state, action) => {
+          state.push(action.payload);
+      },
+      sellScoop: (state, action) => {
+        const iceCream = state.find(item => item.id === action.payload.id);
+        if (iceCream) {
+          iceCream.scoops -= 1;
+          iceCream.buckets = iceCream.scoops < 130 ? 0 : iceCream.buckets;
+        }
+      },
+      restockIceCream: (state, action) => {
+          const iceCream = state.find(item => item.id === action.payload.id);
+          if (iceCream) {
+              iceCream.buckets += 1;
+              iceCream.scoops += 130;
+          }
+      },
   },
 });
 
-export const { addIceCream, sellScoop, showSelectedIceCream } = iceCreamSlice.actions;
+
+export const { addIceCream, sellScoop,  restockIceCream } = iceCreamSlice.actions;
 export default iceCreamSlice.reducer;
 export const iceCreamSelector = (state) => state.iceCream;

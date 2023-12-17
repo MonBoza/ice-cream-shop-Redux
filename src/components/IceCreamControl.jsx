@@ -7,6 +7,8 @@ import chocolate from "../assets/img/chocolate.jpg";
 import cookiesandcream from "../assets/img/cookiesandcream.jpg";
 import unicorn from "../assets/img/unicorn.jpg";
 import rockyroad from "../assets/img/rockyroad.jpg";
+import { useDispatch, useSelector } from 'react-redux';
+import { addIceCream, sellScoop, showSelectedIceCream, restockIceCream, iceCreamSelector } from '../redux/iceCreamSlice';
 
 
 const IceCreamControl = () => {
