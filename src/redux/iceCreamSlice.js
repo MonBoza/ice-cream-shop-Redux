@@ -4,7 +4,7 @@ import rockyroad from '../assets/img/rockyroad.jpg';
 import cookiesandcream from '../assets/img/cookiesandcream.jpg';
 import unicorn from '../assets/img/unicorn.jpg';
 
-const initialState = [
+const initialState = { iceCream: [
   {
       flavor: 'chocolate',
       buckets: 1,
@@ -37,28 +37,27 @@ const initialState = [
       image: unicorn,
       price: 4.99,
   },
-];
+]};
 
 const iceCreamSlice = createSlice({
   name: 'iceCream',
-  initialState,
+  initialState: initialState,
   reducers: {
       addIceCream: (state, action) => {
           state.push(action.payload);
       },
       sellScoop: (state, action) => {
-        const iceCream = state.find(item => item.id === action.payload.id);
-        if (iceCream) {
-          iceCream.scoops -= 1;
-          iceCream.buckets = iceCream.scoops < 130 ? 0 : iceCream.buckets;
-        }
+        const { id } = action.payload;
+       return state.map((iceCream) => {
+          return iceCream.id === action.payload.id ? { ...iceCream, scoops: iceCream.scoops - 1 } : iceCream;
+        });
       },
       restockIceCream: (state, action) => {
-          const iceCream = state.find(item => item.id === action.payload.id);
-          if (iceCream) {
-              iceCream.buckets += 1;
-              iceCream.scoops += 130;
-          }
+        const { id } = action.payload;
+        return state.map((iceCream) => {
+          console.log(iceCream);
+          return iceCream.id === id ? { ...iceCream, buckets: iceCream.buckets + 1, scoops: iceCream.scoops + 130 } : iceCream;
+        });
       },
   },
 });
