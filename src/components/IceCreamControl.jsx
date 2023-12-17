@@ -3,52 +3,19 @@ import IceCreamDetails from "./IceCreamDetails.jsx";
 import NewIceCreamForm from "./NewIceCreamForm.jsx";
 import NavBar from "./NavBar.jsx";
 import IceCreamList from "./IceCreamList.jsx";
-import chocolate from "../assets/img/chocolate.jpg";
-import cookiesandcream from "../assets/img/cookiesandcream.jpg";
-import unicorn from "../assets/img/unicorn.jpg";
-import rockyroad from "../assets/img/rockyroad.jpg";
 import { useDispatch, useSelector } from 'react-redux';
-import { addIceCream, sellScoop, showSelectedIceCream, restockIceCream, iceCreamSelector } from '../redux/iceCreamSlice';
+import iceCreamReducer,{ addIceCream, sellScoop, restockIceCream,  iceCreamSelector} from '../redux/iceCreamSlice';
+
+
 
 
 const IceCreamControl = () => {
-    const [iceCream, setIceCream] = useState([
-        {
-            flavor: 'chocolate',
-            buckets: 1,
-            scoops: 130,
-            id: '1',
-            image: chocolate,
-            price: 4.99,
-        },
-        {
-            flavor: 'rocky road',
-            buckets: 1,
-            scoops: 130,
-            id: '2',
-            image: rockyroad,
-            price: 4.99,
-        },
-        {
-            flavor: 'cookies and cream',
-            buckets: 1,
-            scoops: 130,
-            id: '3',
-            image: cookiesandcream,
-            price: 4.99,
-        },
-        {
-            flavor: 'unicorn',
-            buckets: 1,
-            scoops: 130,
-            id: '4',
-            image: unicorn,
-            price: 4.99,
-        },
-    ]);
+    const iceCream = useSelector(iceCreamSelector);
+   
+    const dispatch = useDispatch();
 
-    const [handleShowFavorite, setShowIceCream] = useState(false);
-    const [selectedIceCream, setSelectedFlavor] = useState(null);
+    const [showIceCream, setShowIceCream] = useState(false);
+    const [selectedIceCream, setSelectedIceCream] = useState(null);
     const [showAddFlavorForm, setShowAddFlavorForm] = useState(false);
 
     const handleShowAddFlavorForm = () => {
@@ -57,62 +24,30 @@ const IceCreamControl = () => {
 
     const handleShowFavoriteIceCream = () => {
         setShowIceCream(true);
-        setSelectedFlavor(null);
-    };
-
-    const showIceCream = (iceCream) => {
-        setShowIceCream(false);
-        setSelectedFlavor(iceCream);
-        setShowAddFlavorForm(false);
+        setSelectedIceCream(null);
     };
 
     const handleHome = () => {
         setShowIceCream(false);
-        setSelectedFlavor(null);
+        setSelectedIceCream(null);
         setShowAddFlavorForm(false);
     }
-    const handleRestock = () => {
-        setIceCream((prevIceCream) => {
-            const updatedIceCream = prevIceCream.map((item) => {
-                return item.id === selectedIceCream.id
-                    ? {
-                        ...item,
-                        buckets: item.buckets + 1,
-                        scoops: item.scoops + 130,
-                    }
-                    : item;
-            });
-            const updatedItem = updatedIceCream.find((item) => item.id === selectedIceCream.id);
-            setSelectedFlavor(updatedItem);
-            return updatedIceCream;
-        });
-    };
 
+    const handleRestock = () => {
+        dispatch(restockIceCream({ selectedIceCream }));
+    };
 
     const handlePurchase = () => {
-        setIceCream((prevIceCream) => {
-            const updatedIceCream = prevIceCream.map((item) =>
-                item.id === selectedIceCream.id && item.buckets > 0
-                    ? { ...item, scoops: item.scoops - 1 }
-                    : item
-            );
-            const updatedItem = updatedIceCream.find((item) => item.id === selectedIceCream.id);
-            setSelectedFlavor(updatedItem);
-            return updatedIceCream;
-        });
+        dispatch(sellScoop({ selectedIceCream }));
     };
-
 
     const handleAddingNewIceCreamToList = (newIceCream) => {
-        setIceCream((prevIceCream) => {
-            const updatedIceCream = [...prevIceCream, newIceCream];
-            return updatedIceCream;
-        });
+        dispatch(addIceCream(newIceCream));
         setShowAddFlavorForm(false);
-    };
+    };  
 
-    const filteredFlavors = handleShowFavorite
-        ? iceCream.filter((item) => item.flavor === 'chocolate')
+    const filteredFlavors = showIceCream
+        ? iceCream.map((item) => item.flavor === 'chocolate')
         : iceCream;
 
     return (
@@ -135,14 +70,14 @@ const IceCreamControl = () => {
                     />
                 ) : (
                     <>
-                        <IceCreamList iceCream={filteredFlavors} onItemClick={showIceCream} />
-
+                        <IceCreamList iceCream={filteredFlavors} onItemClick={setSelectedIceCream} />
                     </>
                 )}
             </div>
         </>
     );
-}
+};
+
 
 
 export default IceCreamControl;

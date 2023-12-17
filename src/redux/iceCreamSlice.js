@@ -4,7 +4,8 @@ import rockyroad from '../assets/img/rockyroad.jpg';
 import cookiesandcream from '../assets/img/cookiesandcream.jpg';
 import unicorn from '../assets/img/unicorn.jpg';
 
-const initialState = { iceCream: [
+const initialState = { 
+  iceCream: [
   {
       flavor: 'chocolate',
       buckets: 1,
@@ -37,32 +38,42 @@ const initialState = { iceCream: [
       image: unicorn,
       price: 4.99,
   },
-]};
+],
+
+
+};
 
 const iceCreamSlice = createSlice({
   name: 'iceCream',
-  initialState: initialState,
-  reducers: {
+  initialState,
+    reducers: {
       addIceCream: (state, action) => {
           state.push(action.payload);
+          console.log(state);
       },
       sellScoop: (state, action) => {
         const { id } = action.payload;
-       return state.map((iceCream) => {
-          return iceCream.id === action.payload.id ? { ...iceCream, scoops: iceCream.scoops - 1 } : iceCream;
+       return state.map((state) => {
+          return state.id === id ? { ...state, scoops: state.scoops - 1 } : state;
         });
+       
       },
       restockIceCream: (state, action) => {
         const { id } = action.payload;
-        return state.map((iceCream) => {
-          console.log(iceCream);
-          return iceCream.id === id ? { ...iceCream, buckets: iceCream.buckets + 1, scoops: iceCream.scoops + 130 } : iceCream;
+        return state.map((state) => {
+       
+          return state.id === id ? { ...state, buckets: state.buckets + 1, scoops: state.scoops + 130 } : state;
         });
       },
   },
 });
 
 
+
 export const { addIceCream, sellScoop,  restockIceCream } = iceCreamSlice.actions;
-export default iceCreamSlice.reducer;
+
 export const iceCreamSelector = (state) => state.iceCream;
+export default iceCreamSlice.reducer;
+
+
+// export const selectedIceCreamSelector = (state) => state.selectedIceCream;

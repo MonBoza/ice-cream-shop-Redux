@@ -10,8 +10,8 @@ const state = {
 
  describe('iceCreamSelector', () => {
   test('should return all iceCreams', () => {
-  const iceCream = iceCreamSelector(state);
-    expect(iceCream).toEqual([ 
+  const iceCreamList = iceCreamSelector(state);
+    expect(iceCreamList).toEqual([ 
       { flavor: 'Chocolate', buckets: 1, scoops: 130, id: 1, image: undefined, price: 4.99 },
      { flavor: 'Rocky Road', buckets: 1, scoops: 130, id: 2, image: undefined, price: 4.99 }, 
      { flavor: 'Cookies and Cream', buckets: 1, scoops: 130, id: 3, image: undefined, price: 4.99 }, 

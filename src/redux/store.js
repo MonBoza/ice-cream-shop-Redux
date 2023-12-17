@@ -1,7 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import iceCreamsReducer from "./iceCreamSlice";
+import iceCreamReducer from "./iceCreamSlice";
+
+
 export const store = configureStore({
   reducer: {
-    iceCreams: iceCreamsReducer,
+    iceCream: iceCreamReducer,
   },
 });

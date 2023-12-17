@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 
 const IceCreamList = (props) => {
@@ -6,22 +7,22 @@ const IceCreamList = (props) => {
   return (
     <div className="container">
       <div className="row">
-        {iceCream.map((iceCream) => (
-          <div key={iceCream.id} className="col-md-4 mb-4">
+        {Object.values(iceCream).map((iceCreamItem) => (
+          <div key={iceCreamItem.id} className="col-md-4 mb-4">
             <div
               className="card"
               style={{ cursor: "pointer" }}
-              onClick={() => onItemClick(iceCream)}
+              onClick={() => onItemClick(iceCreamItem)}
             >
               <img
                 className="card-img-top"
-                src={iceCream.image}
-                alt={iceCream.flavor}
+                src={iceCreamItem.image}
+                alt={iceCreamItem.flavor}
               />
               <div className="card-body">
-                <h5 className="card-title">{iceCream.flavor}</h5>
-                <p className="card-text">Scoop Price: ${iceCream.price}</p>
-                <p>Buckets left: {iceCream.buckets}</p>
+                <h5 className="card-title">{iceCreamItem.flavor}</h5>
+                <p className="card-text">Scoop Price: ${iceCreamItem.price}</p>
+                <p>Buckets left: {iceCreamItem.buckets}</p>
               </div>
             </div>
           </div>
@@ -32,8 +33,8 @@ const IceCreamList = (props) => {
 };
 
 IceCreamList.propTypes = {
-  iceCream: PropTypes.array,
-  onItemClick: PropTypes.func,
+  iceCream: PropTypes.object.isRequired,
+  onItemClick: PropTypes.func.isRequired,
 };
 
 export default IceCreamList;

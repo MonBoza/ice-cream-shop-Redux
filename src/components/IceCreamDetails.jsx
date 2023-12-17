@@ -1,16 +1,8 @@
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+
 
 const IceCreamDetails = (props) => {
   const { iceCream, onHandleRestockClick, onPurchaseClick} = props;
-
-
-
-  const [scoops, setScoops] = useState(iceCream.scoops);
-
-  useEffect(() => {
-    setScoops(iceCream.scoops);
-  }, [iceCream]);
 
   if (!iceCream) {
     return <div>No ice cream selected.</div>;
