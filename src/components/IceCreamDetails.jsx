@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 
 const IceCreamDetails = (props) => {
-  const { iceCream, onHandleRestockClick, onPurchaseClick} = props;
+  const { iceCream, onHandleRestockClick, onPurchaseClick } = props;
 
   if (!iceCream) {
     return <div>No ice cream selected.</div>;
@@ -17,7 +17,7 @@ const IceCreamDetails = (props) => {
           <h3>Scoops: {iceCream.scoops}Out of Stock</h3>
           <p>Scoop Price: ${iceCream.price}</p>
           <button onClick={onHandleRestockClick}>Restock</button>
-         
+
         </div>
       ) : (
         <div id="iceCream">
@@ -27,7 +27,7 @@ const IceCreamDetails = (props) => {
           <p>Scoop Price: ${iceCream.price}</p>
           <button onClick={onHandleRestockClick}>Restock Bucket</button>
           <button onClick={onPurchaseClick}>Sell A Scoop</button>
-       
+
           <hr />
         </div>
       )}
