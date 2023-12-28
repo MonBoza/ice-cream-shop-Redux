@@ -1,22 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IceCreamDetails from "./IceCreamDetails.jsx";
 import NewIceCreamForm from "./NewIceCreamForm.jsx";
 import NavBar from "./NavBar.jsx";
 import IceCreamList from "./IceCreamList.jsx";
 import { useDispatch, useSelector } from 'react-redux';
-import iceCreamReducer,{ addIceCream, sellScoop, restockIceCream,  iceCreamSelector} from '../redux/iceCreamSlice';
+import iceCreamSlice, {  addIceCream, sellScoop, restockIceCream, iceCreamSelector} from '../redux/iceCreamSlice';
 
 
 
 
 const IceCreamControl = () => {
     const iceCream = useSelector(iceCreamSelector);
-   
+
     const dispatch = useDispatch();
 
     const [showIceCream, setShowIceCream] = useState(false);
     const [selectedIceCream, setSelectedIceCream] = useState(null);
     const [showAddFlavorForm, setShowAddFlavorForm] = useState(false);
+
+    useEffect(() => {
+        if (selectedIceCream) {
+            setSelectedIceCream(iceCream.find((item) => item.id === selectedIceCream.id));
+        }
+    }, [iceCream, selectedIceCream]);
 
     const handleShowAddFlavorForm = () => {
         setShowAddFlavorForm(true);
@@ -34,20 +40,21 @@ const IceCreamControl = () => {
     }
 
     const handleRestock = () => {
-        dispatch(restockIceCream({ selectedIceCream }));
-    };
+        dispatch(restockIceCream(selectedIceCream));
+      
 
+    };
     const handlePurchase = () => {
-        dispatch(sellScoop({ selectedIceCream }));
+        dispatch(sellScoop(selectedIceCream));
     };
 
     const handleAddingNewIceCreamToList = (newIceCream) => {
         dispatch(addIceCream(newIceCream));
         setShowAddFlavorForm(false);
-    };  
+    };
 
     const filteredFlavors = showIceCream
-        ? iceCream.map((item) => item.flavor === 'chocolate')
+        ? iceCream.filter((item) => item.flavor === 'chocolate')
         : iceCream;
 
     return (
@@ -77,7 +84,6 @@ const IceCreamControl = () => {
         </>
     );
 };
-
 
 
 export default IceCreamControl;

@@ -4,7 +4,6 @@ import { v4 } from 'uuid';
 
 function NewIceCreamForm({ onSubmit }) {
   const [image, setImage] = useState(null);
-
   const handleNewIceCreamFormSubmission = (event) => {
     event.preventDefault();
     const flavor = event.target.flavor.value;

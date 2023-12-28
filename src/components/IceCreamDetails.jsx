@@ -15,7 +15,7 @@ const IceCreamDetails = (props) => {
           <h2>Flavor: {iceCream.flavor}</h2>
           <h3>Buckets: Out of Stock </h3>
           <h3>Scoops: {iceCream.scoops}Out of Stock</h3>
-          <p>Scoop Price: ${iceCream.price.toFixed(2)}</p>
+          <p>Scoop Price: ${iceCream.price}</p>
           <button onClick={onHandleRestockClick}>Restock</button>
          
         </div>
@@ -24,7 +24,7 @@ const IceCreamDetails = (props) => {
           <h2>Flavor: {iceCream.flavor}</h2>
           <h3>Buckets: {iceCream.buckets}</h3>
           <h3>Scoops: {iceCream.scoops} </h3>
-          <p>Scoop Price: ${iceCream.price.toFixed(2)}</p>
+          <p>Scoop Price: ${iceCream.price}</p>
           <button onClick={onHandleRestockClick}>Restock Bucket</button>
           <button onClick={onPurchaseClick}>Sell A Scoop</button>
        

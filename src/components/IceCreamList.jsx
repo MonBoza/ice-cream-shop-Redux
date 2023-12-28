@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { store } from "../redux/store.js";
+console.log(store.getState());
 
 const IceCreamList = (props) => {
   const { iceCream, onItemClick } = props;
@@ -7,7 +9,7 @@ const IceCreamList = (props) => {
   return (
     <div className="container">
       <div className="row">
-        {Object.values(iceCream).map((iceCreamItem) => (
+        {iceCream.map((iceCreamItem) => (
           <div key={iceCreamItem.id} className="col-md-4 mb-4">
             <div
               className="card"
@@ -33,7 +35,7 @@ const IceCreamList = (props) => {
 };
 
 IceCreamList.propTypes = {
-  iceCream: PropTypes.object.isRequired,
+  iceCream: PropTypes.array.isRequired,
   onItemClick: PropTypes.func.isRequired,
 };
 

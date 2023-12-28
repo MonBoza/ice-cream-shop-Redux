@@ -6,8 +6,8 @@
 .navBar {
   display: flex;
   justify-content: space-between;
-  background-color: #82b2d0;
-  color: #ffffff;
+  background-color: #63aad6;
+  color: #cabfbf;
   padding: 10px;
 }
 
@@ -45,7 +45,7 @@ button {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #8abcf3;
   color: #ffffff;
   cursor: pointer;
 }
@@ -64,7 +64,7 @@ button {
 }
 
 button {
-  background-color: #28a745;
+  background-color: #2859a7;
   color: #ffffff;
   cursor: pointer;
   margin-right: 10px;
