@@ -30,15 +30,15 @@ function NewIceCreamForm({ onSubmit }) {
     };
 
     if (file) {
-        const reader = new FileReader();
-    
-        reader.onloadend = () => {
-          setImage(reader.result);
-        };
-    
-        reader.readAsDataURL(file);
-      }
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+
+      reader.readAsDataURL(file);
     }
+  }
 
   return (
     <>

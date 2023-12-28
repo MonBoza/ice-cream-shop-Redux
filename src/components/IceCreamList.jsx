@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { store } from "../redux/store.js";
-console.log(store.getState());
+
 
 const IceCreamList = (props) => {
   const { iceCream, onItemClick } = props;

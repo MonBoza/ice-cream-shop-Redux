@@ -4,13 +4,14 @@ import NewIceCreamForm from "./NewIceCreamForm.jsx";
 import NavBar from "./NavBar.jsx";
 import IceCreamList from "./IceCreamList.jsx";
 import { useDispatch, useSelector } from 'react-redux';
-import iceCreamSlice, {  addIceCream, sellScoop, restockIceCream, iceCreamSelector} from '../redux/iceCreamSlice';
+import iceCreamSlice, {  selectedFlavor, addIceCream, sellScoop, restockIceCream, iceCreamSelector} from '../redux/iceCreamSlice';
 
 
 
 
 const IceCreamControl = () => {
     const iceCream = useSelector(iceCreamSelector);
+    console.log(iceCream);
 
     const dispatch = useDispatch();
 
@@ -18,6 +19,8 @@ const IceCreamControl = () => {
     const [selectedIceCream, setSelectedIceCream] = useState(null);
     const [showAddFlavorForm, setShowAddFlavorForm] = useState(false);
 
+
+// i cant seem to get the selected iceCream to update on click with out the useEffect
     useEffect(() => {
         if (selectedIceCream) {
             setSelectedIceCream(iceCream.find((item) => item.id === selectedIceCream.id));
@@ -41,7 +44,7 @@ const IceCreamControl = () => {
 
     const handleRestock = () => {
         dispatch(restockIceCream(selectedIceCream));
-      
+          return selectedIceCream
 
     };
     const handlePurchase = () => {

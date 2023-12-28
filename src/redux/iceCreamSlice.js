@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
 import chocolate from '../assets/img/chocolate.jpg';
 import rockyroad from '../assets/img/rockyroad.jpg';
 import cookiesandcream from '../assets/img/cookiesandcream.jpg';
 import unicorn from '../assets/img/unicorn.jpg';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState =  [
   {
@@ -58,7 +58,6 @@ const iceCreamSlice = createSlice({
       },
       sellScoop: (state, action) => {
         const { id } = action.payload;
-    
        return state.map((item) => {
           return item.id === id ? { ...item, scoops: item.scoops - 1 } : item;
         });
@@ -74,9 +73,10 @@ const iceCreamSlice = createSlice({
 });
 
 
+// is there a way to update selected flavor without having to use the useEffect hook?
 
 export const { addIceCream, sellScoop,  restockIceCream, selectedFlavor } = iceCreamSlice.actions;
 
 export const iceCreamSelector = (state) => state.iceCream;
-console.log(iceCreamSelector);
+console.log(iceCreamSelector(state => state.iceCream));
 export default iceCreamSlice.reducer;
