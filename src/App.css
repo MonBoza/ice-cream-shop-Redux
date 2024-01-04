@@ -1,30 +1,35 @@
 .header-text {
-  color:darkviolet;
+  color: rgb(142, 208, 236);
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 500;
 }
+
 .navBar {
   display: flex;
   justify-content: space-between;
-  background-color: #63aad6;
+  background-color: #96bed6;
   color: #cabfbf;
   padding: 10px;
 }
 
 .iceCreamList {
   display: flex;
+  justify-content: center; /* Center the iceCreamList */
 }
 
 .separator {
-  margin: 0 20px; 
+  margin: 0 20px;
 }
 
 body {
   font-family: 'Arial', sans-serif;
-  background-image: url('https://img.freepik.com/free-vector/memphis-falling-confetti-style-pattern-background_1017-27574.jpg?size=626&ext=jpg');
+  background-color: rgb(246, 235, 219);
   margin: 0;
   padding: 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
 }
 
 .container {
@@ -54,17 +59,18 @@ button {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  color: aqua;
+  box-shadow: 0 0 10px rgba(232, 219, 219, 0.1);
+  color: rgb(8, 113, 113);
+  margin: 0 auto;
 }
 
 #iceCream h2 {
-  color: #007bff;
+  color: #64a0df;
   margin-bottom: 10px;
 }
 
 button {
-  background-color: #2859a7;
+  background-color: #6b89b9;
   color: #ffffff;
   cursor: pointer;
   margin-right: 10px;

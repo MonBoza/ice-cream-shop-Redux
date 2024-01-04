@@ -19,13 +19,14 @@ const IceCreamControl = () => {
     const [showAddFlavorForm, setShowAddFlavorForm] = useState(false);
 
 
-    // i cant seem to get the selected iceCream to update on click with out the useEffect
+    // // i cant seem to get the selected iceCream to update on click with out the useEffect
     useEffect(() => {
         if (selectedIceCream) {
             setSelectedIceCream(iceCream.find((item) => item.id === selectedIceCream.id));
         }
     }, [iceCream, selectedIceCream]);
 
+  
     const handleShowAddFlavorForm = () => {
         setShowAddFlavorForm(true);
     }
@@ -43,7 +44,7 @@ const IceCreamControl = () => {
 
     const handleRestock = () => {
         dispatch(restockIceCream(selectedIceCream));
-        return selectedIceCream
+
 
     };
     const handlePurchase = () => {
